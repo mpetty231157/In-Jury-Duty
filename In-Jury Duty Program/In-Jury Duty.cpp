@@ -75,6 +75,7 @@ int main()
         cout << "4. Show Top 5 Most Dangerous Places to Live\n";
         cout << "5. Find Rating Given Place Name\n";
         cout << "6. Exit Program\n";
+        cout << "7. DEV: Switch Data Structure\n";
 
         // Ask for Input and Validate Input
         string taskString;
@@ -201,6 +202,18 @@ int main()
         {
             // Exit the Program
             runProgram = false;
+            continue;
+        }
+        case 7:
+        {
+            if (maxHeap) {
+                maxHeap = false;
+                cout << "Data Structure changed to Unordered Map.\n";
+            }
+            else {
+                maxHeap = true;
+                cout << "Data Structure changed to Max Heap.\n";
+            }
             continue;
         }
         default:
