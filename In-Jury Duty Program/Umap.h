@@ -20,14 +20,14 @@ vector<string> UmapSmallest(vector<pair<string, double>>& data, int numElements)
     for (int i = 0; i < numElements; i++) {
 
         //Rewrite min_element to find smallest value in map
-        auto pr = min_element(testMap.begin(), testMap.end(), [](const auto& x, const auto& y) {
+        auto pointer = min_element(testMap.begin(), testMap.end(), [](const auto& x, const auto& y) {
             return x.second < y.second;
             });
 
         //Add name to the vector of strings and erase the value
-        smallestNums.push_back(pr->first);
+        smallestNums.push_back(pointer->first);
 
-        testMap.erase(pr->first);
+        testMap.erase(pointer->first);
     }
 
     return smallestNums;
@@ -49,14 +49,14 @@ vector<string> UmapLargest(vector<pair<string, double>>& data, int numElements) 
     for (int i = 0; i < numElements; i++) {
 
         //Rewrite max_element to find largest value in unordered map
-        auto pr = max_element(testMap.begin(), testMap.end(), [](const auto& x, const auto& y) {
+        auto pointer = max_element(testMap.begin(), testMap.end(), [](const auto& x, const auto& y) {
             return x.second < y.second;
             });
 
         //Add name to the vector of strings and erase the value
-        largestNums.push_back(pr->first);
+        largestNums.push_back(pointer->first);
 
-        testMap.erase(pr->first);
+        testMap.erase(pointer->first);
     }
 
     return largestNums;

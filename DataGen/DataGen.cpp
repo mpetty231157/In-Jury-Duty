@@ -6,13 +6,11 @@
 #include <vector>
 #include <fstream>
 #include "Data.h"
-#include <chrono>
 using namespace std;
 
 int main()
 {
 
-	auto start = chrono::high_resolution_clock::now();
 	// create a vector of 20 years from 2002 to 2022
 	vector<string> years;
 	for (int i = 2002; i < 2022; i++) {
@@ -86,11 +84,6 @@ int main()
 	} 
 
 	outfile.close();
-
-	auto stop = chrono::high_resolution_clock::now();
-
-	auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-	cout << "Function Runtime: " << duration.count() << " microseconds\n";
 
 	return 1;
 

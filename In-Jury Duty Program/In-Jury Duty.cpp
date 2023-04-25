@@ -176,6 +176,7 @@ int main()
             cin >> year;
             cout << "What State is your City in?\n";
             cin >> state;
+            cin.ignore();
             cout << "What is the name of your City?\n";
             getline(cin, city);
 
