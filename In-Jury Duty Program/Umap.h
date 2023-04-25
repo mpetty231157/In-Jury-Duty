@@ -56,12 +56,12 @@ vector<string> UmapLargest(vector<pair<string, double>>& data, int numElements) 
     }
 
 
-    vector<string> smallestNums;
-    //Store smallest values into a vector of strings
+    vector<string> largestNums;
+    //Store largest values into a vector of strings
     for (int i = 0; i < numElements; i++) {
         double max_val = INT_MIN;
         auto pointer = testMap.begin();
-        //Rewrite min_element to find largest value in map
+        ///find largest value in map and set pointer to its position
         for (auto it = testMap.begin(); it != testMap.end(); ++it){
             if (max_val < it->second){
                 max_val = it->second;
@@ -69,12 +69,12 @@ vector<string> UmapLargest(vector<pair<string, double>>& data, int numElements) 
             }
         }
         //Add name to the vector of strings and erase the value
-        smallestNums.push_back(pointer->first);
+        largestNums.push_back(pointer->first);
 
         testMap.erase(pointer->first);
     }
 
-    return smallestNums;
+    return largestNums;
 }
 
 //Returns the rating of a data point given the name using a unordered map
