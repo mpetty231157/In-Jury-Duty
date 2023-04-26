@@ -10,20 +10,28 @@ vector<string> UmapSmallest(vector<pair<string, double>>& data, int numElements)
 
     //The key is the year/location and the value is the injury rating
     unordered_map <string, double> testMap;
+
+
     //Add all of the data points to the unordered map
-    for (int i = 0; i < data.size(); i++) {
-        testMap[data.at(i).first] = data.at(i).second;
+    for (auto & it : data){
+        string year = it.first;
+        double rating = it.second;
+        testMap[year] = rating;
     }
+
 
     vector<string> smallestNums;
     //Store smallest values into a vector of strings
     for (int i = 0; i < numElements; i++) {
-
-        //Rewrite min_element to find smallest value in map
-        auto pointer = min_element(testMap.begin(), testMap.end(), [](const auto& x, const auto& y) {
-            return x.second < y.second;
-            });
-
+        double min_val = INT_MAX;
+        auto pointer = testMap.begin();
+        //find smallest value in map and set pointer to its position
+        for (auto it = testMap.begin(); it != testMap.end(); ++it){
+            if (min_val > it->second){
+                min_val = it->second;
+                pointer = it;
+            }
+        }
         //Add name to the vector of strings and erase the value
         smallestNums.push_back(pointer->first);
 
@@ -39,20 +47,27 @@ vector<string> UmapLargest(vector<pair<string, double>>& data, int numElements) 
     //The key is the year/location and the value is the injury rating
     unordered_map <string, double> testMap;
 
+
     //Add all of the data points to the unordered map
-    for (int i = 0; i < data.size(); i++) {
-        testMap[data.at(i).first] = data.at(i).second;
+    for (auto & it : data){
+        string year = it.first;
+        double rating = it.second;
+        testMap[year] = rating;
     }
+
 
     vector<string> largestNums;
     //Store largest values into a vector of strings
     for (int i = 0; i < numElements; i++) {
-
-        //Rewrite max_element to find largest value in unordered map
-        auto pointer = max_element(testMap.begin(), testMap.end(), [](const auto& x, const auto& y) {
-            return x.second < y.second;
-            });
-
+        double max_val = INT_MIN;
+        auto pointer = testMap.begin();
+        ///find largest value in map and set pointer to its position
+        for (auto it = testMap.begin(); it != testMap.end(); ++it){
+            if (max_val < it->second){
+                max_val = it->second;
+                pointer = it;
+            }
+        }
         //Add name to the vector of strings and erase the value
         largestNums.push_back(pointer->first);
 
